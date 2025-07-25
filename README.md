@@ -43,6 +43,30 @@ This file implements the Vision Transformer (ViT) portion of the SigLIP architec
 
 ---
 
+### `processing_paligemma.py`
+
+This file provides a lightweight preprocessing module for preparing image and text inputs for PaLI-Gemma-style vision-language models. It includes:
+
+1. **`add_image_tokens_to_prompt`**  
+   Prepends `<image>` tokens and a `<bos>` token to the prompt, and appends a newline for compatibility with training format.
+
+2. **`rescale`**  
+   Scales pixel values (e.g., by `1/255.0`) and converts the array to a float dtype.
+
+3. **`resize`**  
+   Resizes a `PIL.Image` to a target `(height, width)` using the specified resampling method.
+
+4. **`normalize`**  
+   Normalizes an image by subtracting the mean and dividing by the standard deviation.
+
+5. **`process_images`**  
+   Applies resize → CHW conversion → rescaling → normalization to a list of images.
+
+6. **`PaligemmaProcessor`**  
+   Main callable that processes images and text into `pixel_values`, `input_ids`, and `attention_mask` for model input.
+
+
+
 ## 🚧 Notes
 
 - This repository is **educational** in nature and may not be optimized for performance.
